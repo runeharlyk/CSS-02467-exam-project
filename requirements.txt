@@ -1,0 +1,7 @@
+polars
+seaborn
+networkx
+netwulf
+numpy
+matplotlib
+python-louvain
