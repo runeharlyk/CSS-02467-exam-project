@@ -174,3 +174,4 @@ cython_debug/
 .pypirc
 dataset/meta_Movies_and_TV.jsonl
 dataset/Movies_and_TV.jsonl
+dataset/tokenizedReviews.json
