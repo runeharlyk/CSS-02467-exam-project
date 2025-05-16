@@ -64,7 +64,19 @@
       .animate-fade-in {
         animation: fadeIn 0.6s ease-out forwards;
       }
+      .bullet {
+        width: 0.5rem;
+        height: 0.5rem;
+        margin-right: 0.75rem;
+        margin-top: 0.5rem;
+        flex-shrink: 0;
+      }
     </style>
+    <svg style="display: none">
+      <symbol id="bullet" viewBox="0 0 8 8">
+        <circle cx="4" cy="4" r="4" />
+      </symbol>
+    </svg>
   </head>
   <body class="bg-gray-50">
     <nav
@@ -94,15 +106,18 @@
           </button>
           <div class="hidden md:flex space-x-8" id="navbarMenu">
             <a href="#dataset" class="nav-link hover:text-blue-400">Dataset</a>
-            <a href="#network" class="nav-link hover:text-blue-400"
-              >Network Analysis</a
-            >
-            <a href="#text" class="nav-link hover:text-blue-400"
-              >Text Analysis</a
-            >
-            <a href="#download" class="nav-link hover:text-blue-400"
-              >Downloads</a
-            >
+            <a href="#network" class="nav-link hover:text-blue-400">
+              Network Analysis
+            </a>
+            <a href="#text" class="nav-link hover:text-blue-400">
+              Text Analysis
+            </a>
+            <a href="#insights" class="nav-link hover:text-blue-400">
+              Key Insights
+            </a>
+            <a href="#download" class="nav-link hover:text-blue-400">
+              Downloads
+            </a>
           </div>
         </div>
       </div>
@@ -143,66 +158,26 @@
                 </h4>
                 <ul class="space-y-3 text-gray-600">
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Normalize metadata (titles, prices, descriptions)
                   </li>
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Group reviews by movie title
                   </li>
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Filter for verified purchases with helpful votes
                   </li>
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Remove reviews with missing titles
                   </li>
@@ -214,50 +189,20 @@
                 </h4>
                 <ul class="space-y-3 text-gray-600">
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Final dataset: ~1.6 million reviews
                   </li>
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Original dataset: 17.3 million reviews
                   </li>
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Time period: 1996-2023
                   </li>
@@ -373,50 +318,20 @@
                 </h4>
                 <ul class="space-y-3 text-gray-600">
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     10,897 nodes (movies)
                   </li>
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     25,988 edges
                   </li>
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Edge weight threshold: >= 3
                   </li>
@@ -428,50 +343,20 @@
                 </h4>
                 <ul class="space-y-3 text-gray-600">
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Louvain algorithm (python-louvain)
                   </li>
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Modularity: 0.767
                   </li>
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Nodes annotated with title, rating, and price
                   </li>
@@ -635,50 +520,20 @@
                 </h4>
                 <ul class="space-y-3 text-gray-600">
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Normalize and tokenize reviews
                   </li>
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Generate and merge significant bigrams
                   </li>
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Aggregate tokens by community
                   </li>
@@ -688,54 +543,90 @@
                 <h4 class="text-lg font-semibold text-gray-800">Analysis</h4>
                 <ul class="space-y-3 text-gray-600">
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Compute IDF across communities
                   </li>
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Calculate TF-IDF for five largest communities
                   </li>
                   <li class="flex items-center">
-                    <svg
-                      class="w-5 h-5 mr-2 text-blue-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                    <svg class="bullet text-blue-500" fill="currentColor">
+                      <use href="#bullet" />
                     </svg>
                     Generate word clouds for distinctive phrases
                   </li>
                 </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="insights" class="py-20 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-12 text-center">Key Insights</h2>
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white rounded-xl shadow-lg p-8 card">
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="space-y-6">
+                <div class="p-6 bg-blue-50 rounded-lg">
+                  <h4 class="text-xl font-semibold mb-3 text-gray-800">
+                    Community Structure
+                  </h4>
+                  <ul class="space-y-3 text-gray-600">
+                    <li class="flex items-start">
+                      <svg class="bullet text-blue-500" fill="currentColor">
+                        <use href="#bullet" />
+                      </svg>
+                      <span
+                        >Clear genre-based clustering with high modularity
+                        (0.767)</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <svg class="bullet text-blue-500" fill="currentColor">
+                        <use href="#bullet" />
+                      </svg>
+                      <span>
+                        Large communities and vague communities in middle with
+                        popular titles with distinct niche communities on the
+                        outside.
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="space-y-6">
+                <div class="p-6 bg-purple-50 rounded-lg">
+                  <h4 class="text-xl font-semibold mb-3 text-gray-800">
+                    Audience Behavior
+                  </h4>
+                  <ul class="space-y-3 text-gray-600">
+                    <li class="flex items-start">
+                      <svg class="bullet text-purple-500" fill="currentColor">
+                        <use href="#bullet" />
+                      </svg>
+                      <span
+                        >Reviewers tend to watch and review similar genres</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <svg class="bullet text-purple-500" fill="currentColor">
+                        <use href="#bullet" />
+                      </svg>
+                      <span
+                        >Strong correlation between movie ratings and community
+                        membership</span
+                      >
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -825,50 +716,20 @@
             </p>
             <ul class="space-y-3 mb-8 text-gray-600">
               <li class="flex items-center">
-                <svg
-                  class="w-5 h-5 mr-2 text-blue-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
+                <svg class="bullet text-blue-500" fill="currentColor">
+                  <use href="#bullet" />
                 </svg>
                 Data preprocessing steps
               </li>
               <li class="flex items-center">
-                <svg
-                  class="w-5 h-5 mr-2 text-blue-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
+                <svg class="bullet text-blue-500" fill="currentColor">
+                  <use href="#bullet" />
                 </svg>
                 Network analysis techniques
               </li>
               <li class="flex items-center">
-                <svg
-                  class="w-5 h-5 mr-2 text-blue-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  ></path>
+                <svg class="bullet text-blue-500" fill="currentColor">
+                  <use href="#bullet" />
                 </svg>
                 Text analysis methods
               </li>
