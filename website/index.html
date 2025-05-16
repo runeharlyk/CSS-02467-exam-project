@@ -5,17 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amazon Movie and TV Reviews Analysis</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
       .hero {
-        background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+      .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 8px 10px -6px rgb(0 0 0 / 0.1);
+      }
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: #60a5fa;
+        transition: width 0.3s ease;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease-out forwards;
       }
     </style>
   </head>
   <body class="bg-gray-50">
-    <nav class="bg-gray-900 text-white">
+    <nav
+      class="bg-gray-900 text-white sticky top-0 z-50 backdrop-blur-lg bg-opacity-90"
+    >
       <div class="container mx-auto px-4">
         <div class="flex justify-between items-center py-4">
-          <a href="#" class="text-xl font-bold">Amazon Reviews Analysis</a>
+          <a
+            href="#"
+            class="text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent"
+            >Amazon Reviews Analysis</a
+          >
           <button class="md:hidden" id="menuButton">
             <svg
               class="w-6 h-6"
@@ -31,56 +92,175 @@
               ></path>
             </svg>
           </button>
-          <div class="hidden md:flex space-x-6" id="navbarMenu">
-            <a href="#dataset" class="hover:text-gray-300">Dataset</a>
-            <a href="#network" class="hover:text-gray-300">Network Analysis</a>
-            <a href="#text" class="hover:text-gray-300">Text Analysis</a>
-            <a href="#download" class="hover:text-gray-300">Downloads</a>
+          <div class="hidden md:flex space-x-8" id="navbarMenu">
+            <a href="#dataset" class="nav-link hover:text-blue-400">Dataset</a>
+            <a href="#network" class="nav-link hover:text-blue-400"
+              >Network Analysis</a
+            >
+            <a href="#text" class="nav-link hover:text-blue-400"
+              >Text Analysis</a
+            >
+            <a href="#download" class="nav-link hover:text-blue-400"
+              >Downloads</a
+            >
           </div>
         </div>
       </div>
     </nav>
 
-    <section class="hero text-white py-16">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl font-bold mb-4">
+    <section class="hero text-white py-24">
+      <div class="container mx-auto px-4 text-center relative z-10">
+        <h1 class="text-5xl font-bold mb-6 animate-fade-in">
           Exploring Amazon Movie & TV Reviews
         </h1>
-        <p class="text-xl">
-          Uncovering patterns and insights in entertainment preferences
+        <p
+          class="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in"
+          style="animation-delay: 0.2s"
+        >
+          Uncovering patterns and insights in entertainment preferences through
+          advanced data analysis
         </p>
       </div>
     </section>
 
-    <section id="dataset" class="py-16 bg-gray-100">
+    <section id="dataset" class="py-20 bg-gray-100">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-8">About the Dataset</h2>
-        <div class="max-w-4xl">
-          <div class="bg-white rounded-lg shadow-md p-8 mb-8">
-            <h3 class="text-2xl font-semibold mb-4">
+        <h2 class="text-4xl font-bold mb-12 text-center">About the Dataset</h2>
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-8 card">
+            <h3 class="text-2xl font-semibold mb-6 text-gray-800">
               Amazon Movies & TV Reviews Dataset
             </h3>
-            <p class="mb-6 text-gray-700">
+            <p class="mb-8 text-gray-600 leading-relaxed">
               We analyze a curated subset of Amazon's Movies and TV reviews,
               focusing on verified purchases with helpful votes to ensure data
               quality.
             </p>
-            <div class="grid md:grid-cols-2 gap-6">
+            <div class="grid md:grid-cols-2 gap-8">
               <div class="space-y-4">
-                <h4 class="text-lg font-semibold">Processing Steps</h4>
-                <ul class="space-y-2 text-gray-700">
-                  <li>Normalize metadata (titles, prices, descriptions)</li>
-                  <li>Group reviews by movie title</li>
-                  <li>Filter for verified purchases with helpful votes</li>
-                  <li>Remove reviews with missing titles</li>
+                <h4 class="text-lg font-semibold text-gray-800">
+                  Processing Steps
+                </h4>
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Normalize metadata (titles, prices, descriptions)
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Group reviews by movie title
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Filter for verified purchases with helpful votes
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Remove reviews with missing titles
+                  </li>
                 </ul>
               </div>
               <div class="space-y-4">
-                <h4 class="text-lg font-semibold">Dataset Statistics</h4>
-                <ul class="space-y-2 text-gray-700">
-                  <li>Final dataset: ~1.6 million reviews</li>
-                  <li>Original dataset: 17.3 million reviews</li>
-                  <li>Time period: 1996-2023</li>
+                <h4 class="text-lg font-semibold text-gray-800">
+                  Dataset Statistics
+                </h4>
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Final dataset: ~1.6 million reviews
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Original dataset: 17.3 million reviews
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Time period: 1996-2023
+                  </li>
                 </ul>
               </div>
             </div>
@@ -89,39 +269,135 @@
       </div>
     </section>
 
-    <section id="network" class="py-16">
+    <section id="network" class="py-20">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-8">Network Analysis</h2>
+        <h2 class="text-4xl font-bold mb-12 text-center">Network Analysis</h2>
         <div class="max-w-4xl mx-auto">
-          <div class="bg-white rounded-lg shadow-md p-8 mb-8">
-            <h3 class="text-2xl font-semibold mb-4">Co-Reviewer Network</h3>
-            <p class="mb-6 text-gray-700">
+          <div class="bg-white rounded-xl shadow-lg p-8 mb-8 card">
+            <h3 class="text-2xl font-semibold mb-6 text-gray-800">
+              Co-Reviewer Network
+            </h3>
+            <p class="mb-8 text-gray-600 leading-relaxed">
               We connect movies if they share at least 4 common reviewers,
               creating a network that reveals natural clusters of movies with
               similar audiences.
             </p>
-            <div id="network-viz" class="mb-6">
+            <div id="network-viz" class="mb-8">
               <img
                 src="assets/graph.png"
                 alt="Network Visualization"
-                class="w-full rounded-lg"
+                class="w-full rounded-lg shadow-md"
               />
             </div>
-            <div class="grid md:grid-cols-2 gap-6">
+            <div class="grid md:grid-cols-2 gap-8">
               <div class="space-y-4">
-                <h4 class="text-lg font-semibold">Network Structure</h4>
-                <ul class="space-y-2 text-gray-700">
-                  <li>10,897 nodes (movies)</li>
-                  <li>25,988 edges</li>
-                  <li>Edge weight threshold: >= 3</li>
+                <h4 class="text-lg font-semibold text-gray-800">
+                  Network Structure
+                </h4>
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    10,897 nodes (movies)
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    25,988 edges
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Edge weight threshold: >= 3
+                  </li>
                 </ul>
               </div>
               <div class="space-y-4">
-                <h4 class="text-lg font-semibold">Community Detection</h4>
-                <ul class="space-y-2 text-gray-700">
-                  <li>Louvain algorithm (python-louvain)</li>
-                  <li>Modularity: 0.9375</li>
-                  <li>Nodes annotated with title, rating, and price</li>
+                <h4 class="text-lg font-semibold text-gray-800">
+                  Community Detection
+                </h4>
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Louvain algorithm (python-louvain)
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Modularity: 0.9375
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Nodes annotated with title, rating, and price
+                  </li>
                 </ul>
               </div>
             </div>
@@ -130,35 +406,258 @@
       </div>
     </section>
 
-    <section id="text" class="py-16 bg-gray-100">
+    <section id="text" class="py-20 bg-gray-100">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-8">Text Analysis</h2>
+        <h2 class="text-4xl font-bold mb-12 text-center">Text Analysis</h2>
         <div class="max-w-4xl mx-auto">
-          <div class="bg-white rounded-lg shadow-md p-8">
-            <h3 class="text-2xl font-semibold mb-4">Community Text Analysis</h3>
-            <p class="mb-6 text-gray-700">
+          <div class="bg-white rounded-xl shadow-lg p-8 card">
+            <h3 class="text-2xl font-semibold mb-6 text-gray-800">
+              Community Text Analysis
+            </h3>
+            <p class="mb-8 text-gray-600 leading-relaxed">
               We analyze the language patterns within each detected community to
               understand how different movie clusters are discussed by
               reviewers.
             </p>
-            <div id="text-viz" class="mb-6">
-              <!-- Add your word clouds for the five largest communities here -->
+            <div id="text-viz" class="mb-8">
+              <div class="relative">
+                <div class="overflow-hidden">
+                  <div
+                    class="flex transition-transform duration-500 ease-in-out"
+                    id="wordCloudCarousel"
+                  >
+                    <div class="w-full flex-shrink-0">
+                      <div class="bg-gray-50 rounded-xl p-6">
+                        <h4 class="text-lg font-semibold mb-4 text-gray-800">
+                          Community 1: Blockbuster Movies
+                        </h4>
+                        <img
+                          src="assets/0_wordcloud.png"
+                          alt="Action & Adventure Word Cloud"
+                          class="w-full rounded-lg shadow-sm"
+                        />
+                      </div>
+                    </div>
+                    <div class="w-full flex-shrink-0">
+                      <div class="bg-gray-50 rounded-xl p-6">
+                        <h4 class="text-lg font-semibold mb-4 text-gray-800">
+                          Community 2: Horror & Suspense
+                        </h4>
+                        <img
+                          src="assets/2_wordcloud.png"
+                          alt="Drama & Romance Word Cloud"
+                          class="w-full rounded-lg shadow-sm"
+                        />
+                      </div>
+                    </div>
+                    <div class="w-full flex-shrink-0">
+                      <div class="bg-gray-50 rounded-xl p-6">
+                        <h4 class="text-lg font-semibold mb-4 text-gray-800">
+                          Community 3: American theme
+                        </h4>
+                        <img
+                          src="assets/8_wordcloud.png"
+                          alt="Drama & Romance Word Cloud"
+                          class="w-full rounded-lg shadow-sm"
+                        />
+                      </div>
+                    </div>
+                    <div class="w-full flex-shrink-0">
+                      <div class="bg-gray-50 rounded-xl p-6">
+                        <h4 class="text-lg font-semibold mb-4 text-gray-800">
+                          Community 4: Animated Movies
+                        </h4>
+                        <img
+                          src="assets/15_wordcloud.png"
+                          alt="Drama & Romance Word Cloud"
+                          class="w-full rounded-lg shadow-sm"
+                        />
+                      </div>
+                    </div>
+                    <div class="w-full flex-shrink-0">
+                      <div class="bg-gray-50 rounded-xl p-6">
+                        <h4 class="text-lg font-semibold mb-4 text-gray-800">
+                          Community 5: LGBTQ+ Movies
+                        </h4>
+                        <img
+                          src="assets/19_wordcloud.png"
+                          alt="Comedy & Family Word Cloud"
+                          class="w-full rounded-lg shadow-sm"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-colors"
+                  id="prevWordCloud"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 19l-7-7 7-7"
+                    ></path>
+                  </svg>
+                </button>
+                <button
+                  class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-colors"
+                  id="nextWordCloud"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    ></path>
+                  </svg>
+                </button>
+                <div
+                  class="flex justify-center mt-4 space-x-2"
+                  id="wordCloudDots"
+                >
+                  <button
+                    class="w-2 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors"
+                    data-index="0"
+                  ></button>
+                  <button
+                    class="w-2 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors"
+                    data-index="1"
+                  ></button>
+                  <button
+                    class="w-2 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors"
+                    data-index="2"
+                  ></button>
+                  <button
+                    class="w-2 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors"
+                    data-index="3"
+                  ></button>
+                  <button
+                    class="w-2 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors"
+                    data-index="4"
+                  ></button>
+                </div>
+              </div>
             </div>
-            <div class="grid md:grid-cols-2 gap-6">
+            <div class="grid md:grid-cols-2 gap-8">
               <div class="space-y-4">
-                <h4 class="text-lg font-semibold">Text Processing</h4>
-                <ul class="space-y-2 text-gray-700">
-                  <li>Normalize and tokenize reviews</li>
-                  <li>Generate and merge significant bigrams</li>
-                  <li>Aggregate tokens by community</li>
+                <h4 class="text-lg font-semibold text-gray-800">
+                  Text Processing
+                </h4>
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Normalize and tokenize reviews
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Generate and merge significant bigrams
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Aggregate tokens by community
+                  </li>
                 </ul>
               </div>
               <div class="space-y-4">
-                <h4 class="text-lg font-semibold">Analysis</h4>
-                <ul class="space-y-2 text-gray-700">
-                  <li>Compute IDF across communities</li>
-                  <li>Calculate TF-IDF for five largest communities</li>
-                  <li>Generate word clouds for distinctive phrases</li>
+                <h4 class="text-lg font-semibold text-gray-800">Analysis</h4>
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Compute IDF across communities
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Calculate TF-IDF for five largest communities
+                  </li>
+                  <li class="flex items-center">
+                    <svg
+                      class="w-5 h-5 mr-2 text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"
+                      ></path>
+                    </svg>
+                    Generate word clouds for distinctive phrases
+                  </li>
                 </ul>
               </div>
             </div>
@@ -167,79 +666,139 @@
       </div>
     </section>
 
-    <section id="download" class="py-16">
+    <section id="download" class="py-20">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-8">Downloads & Resources</h2>
+        <h2 class="text-4xl font-bold mb-12 text-center">
+          Downloads & Resources
+        </h2>
         <div class="grid md:grid-cols-2 gap-8">
-          <div class="bg-white rounded-lg shadow-md p-6">
-            <h5 class="text-xl font-semibold mb-4">Dataset Downloads</h5>
-            <div class="space-y-4">
-              <div class="border-b pb-4">
-                <h6 class="font-semibold mb-2">Raw Data</h6>
-                <ul class="space-y-2">
+          <div class="bg-white rounded-xl shadow-lg p-8 card">
+            <h5 class="text-2xl font-semibold mb-6 text-gray-800">
+              Dataset Downloads
+            </h5>
+            <div class="space-y-6">
+              <div class="border-b border-gray-200 pb-6">
+                <h6 class="text-lg font-semibold mb-4 text-gray-800">
+                  Raw Data
+                </h6>
+                <ul class="space-y-4">
                   <li>
                     <a
                       href="https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Movies_and_TV.jsonl.gz"
-                      class="text-blue-600 hover:text-blue-800 flex items-center"
+                      class="flex items-center justify-between p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
                     >
-                      <span>Review Dataset (JSONL)</span>
-                      <span class="text-sm text-gray-500 ml-2"
-                        >17.3M reviews</span
-                      >
+                      <span class="text-blue-600 font-medium">
+                        Review Dataset (JSONL)
+                      </span>
+                      <span class="text-sm text-gray-500">17.3M reviews</span>
                     </a>
                   </li>
                   <li>
                     <a
                       href="https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/meta_categories/meta_Movies_and_TV.jsonl.gz"
-                      class="text-blue-600 hover:text-blue-800 flex items-center"
+                      class="flex items-center justify-between p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
                     >
-                      <span>Metadata Dataset (JSONL)</span>
-                      <span class="text-sm text-gray-500 ml-2"
-                        >747.8K movies and TV shows</span
-                      >
+                      <span class="text-blue-600 font-medium">
+                        Metadata Dataset (JSONL)
+                      </span>
+                      <span class="text-sm text-gray-500">
+                        747.8K movies and TV shows
+                      </span>
                     </a>
                   </li>
                   <li>
                     <a
-                      href="https://github.com/runeharlyk/CSS-02467-exam-project/blob/main/dataset/meta_Movies_and_TV_extended.jsonl"
-                      class="text-blue-600 hover:text-blue-800"
+                      href="https://raw.githubusercontent.com/runeharlyk/CSS-02467-exam-project/refs/heads/main/dataset/meta_Movies_and_TV_extended.jsonl"
+                      class="flex items-center justify-between p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
                     >
-                      <span>Extended Metadata (JSONL)</span>
-                      <span class="text-sm text-gray-500 ml-2">12 reviews</span>
+                      <span class="text-blue-600 font-medium">
+                        Extended Metadata (JSONL)
+                      </span>
+                      <span class="text-sm text-gray-500">12 reviews</span>
                     </a>
                   </li>
                 </ul>
               </div>
               <div>
-                <h6 class="font-semibold mb-2">Processed Data</h6>
-                <ul class="space-y-2">
+                <h6 class="text-lg font-semibold mb-4 text-gray-800">
+                  Processed Data
+                </h6>
+                <ul class="space-y-4">
                   <li>
                     <a
                       href="graph.gexf"
-                      class="text-blue-600 hover:text-blue-800"
+                      class="flex items-center justify-between p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
                     >
-                      Network Graph (GEXF)
+                      <span class="text-blue-600 font-medium"
+                        >Network Graph (GEXF)</span
+                      >
                     </a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-          <div class="bg-white rounded-lg shadow-md p-6">
-            <h5 class="text-xl font-semibold mb-4">Technical Details</h5>
-            <p class="mb-4 text-gray-700">
+          <div class="bg-white rounded-xl shadow-lg p-8 card">
+            <h5 class="text-2xl font-semibold mb-6 text-gray-800">
+              Technical Details
+            </h5>
+            <p class="mb-6 text-gray-600 leading-relaxed">
               For a comprehensive understanding of our analysis methodology,
               including:
             </p>
-            <ul class="space-y-2 mb-6 text-gray-700">
-              <li>Data preprocessing steps</li>
-              <li>Network analysis techniques</li>
-              <li>Text analysis methods</li>
-              <li>Model selection and evaluation</li>
+            <ul class="space-y-3 mb-8 text-gray-600">
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 mr-2 text-blue-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                Data preprocessing steps
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 mr-2 text-blue-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                Network analysis techniques
+              </li>
+              <li class="flex items-center">
+                <svg
+                  class="w-5 h-5 mr-2 text-blue-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                Text analysis methods
+              </li>
             </ul>
             <a
               href="https://nbviewer.org/github/runeharlyk/CSS-02467-exam-project/blob/main/Part%201.ipynb"
-              class="inline-block bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
+              class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
             >
               View Detailed Analysis Notebook
             </a>
@@ -248,9 +807,11 @@
       </div>
     </section>
 
-    <footer class="bg-gray-900 text-white py-8">
+    <footer class="bg-gray-900 text-white py-12">
       <div class="container mx-auto px-4 text-center">
-        <p>Created for Computational Social Science Course (02467)</p>
+        <p class="text-gray-400">
+          Created for Computational Social Science Course (02467)
+        </p>
       </div>
     </footer>
 
@@ -262,6 +823,75 @@
       menuButton.addEventListener("click", () => {
         navbarMenu.classList.toggle("hidden");
       });
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Word Cloud Carousel
+      const carousel = document.getElementById("wordCloudCarousel");
+      const prevButton = document.getElementById("prevWordCloud");
+      const nextButton = document.getElementById("nextWordCloud");
+      const dots = document.querySelectorAll("#wordCloudDots button");
+      let currentIndex = 0;
+      const totalSlides = dots.length;
+      let autoAdvanceInterval;
+      let userInteractionTimeout;
+
+      function startAutoAdvance() {
+        autoAdvanceInterval = setInterval(() => {
+          currentIndex = (currentIndex + 1) % totalSlides;
+          updateCarousel();
+        }, 5000);
+      }
+
+      function stopAutoAdvance() {
+        clearInterval(autoAdvanceInterval);
+      }
+
+      function handleUserInteraction() {
+        stopAutoAdvance();
+        clearTimeout(userInteractionTimeout);
+        userInteractionTimeout = setTimeout(() => {
+          startAutoAdvance();
+        }, 10000); // Resume auto-advance after 10 seconds of inactivity
+      }
+
+      function updateCarousel() {
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("bg-blue-500", index === currentIndex);
+          dot.classList.toggle("bg-gray-300", index !== currentIndex);
+        });
+      }
+
+      prevButton.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+        handleUserInteraction();
+      });
+
+      nextButton.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarousel();
+        handleUserInteraction();
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          currentIndex = index;
+          updateCarousel();
+          handleUserInteraction();
+        });
+      });
+
+      // Start auto-advance initially
+      startAutoAdvance();
     </script>
   </body>
 </html>
