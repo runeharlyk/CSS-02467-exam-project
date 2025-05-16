@@ -223,9 +223,21 @@
               Co-Reviewer Network
             </h3>
             <p class="mb-8 text-gray-600 leading-relaxed">
-              We connect movies if they share at least 3 common reviewers,
-              creating a network that reveals natural clusters of movies with
-              similar audiences.
+              A network has been constructed by linking movies that share common
+              reviewers. The Louvain algorithm is implemented to create
+              communities by optimizing modularity, allowing detection of
+              densely connected groups of movies that share similar
+              characteristics. To ensure the graph will have distinguishable
+              communities, only movies with at least 3 common reviewers are
+              included (edge weight ≥ 3). Mainstream movies are hard to separate
+              due to their broad appeal and are thereby represented in the
+              largest communities in the middle, movies included here are Star
+              Wars, superhero movies and typical blockbuster movies. That said,
+              many large communities seems to be thematically aligned. Some by
+              genres such as horror/suspense, while others are connected through
+              shared cultural interests, like the cluster of classic British
+              literature adaptations, which contains movies like Jane Eyre and
+              Pride and Prejudice.
             </p>
             <div id="network-viz" class="mb-8">
               <div class="relative">
@@ -349,7 +361,7 @@
                     <svg class="bullet text-blue-500" fill="currentColor">
                       <use href="#bullet" />
                     </svg>
-                    Edge weight threshold: >= 3
+                    Edge weight threshold: ≥ 3
                   </li>
                 </ul>
               </div>
@@ -393,13 +405,13 @@
               Community Text Analysis
             </h3>
             <p class="mb-8 text-gray-600 leading-relaxed">
-              The word clouds based on user reviews reveals some interesting
-              patterns in how people consume media content. Some of the larger
-              communities have a broad selection of popular movies and genres,
-              such as star wars, comic books and action. Other communities could
-              be based on personal beliefs or niche genres. Community 3 has
-              Christian and American themes, while community 5 is mainly about
-              homosexuality.
+              Word clouds based on TF-IDF help characterize what is unique to
+              each community. By using word clouds, thematic differences and
+              underlying topics are revealed. Some of the larger communities
+              have a broad selection of popular movies and genres, such as star
+              wars, comic books and action. Other communities could be based on
+              personal beliefs or niche genres. Community 3 has Christian and
+              American themes, while community 5 is mainly about homosexuality.
             </p>
             <div id="text-viz" class="mb-8">
               <div class="relative">
