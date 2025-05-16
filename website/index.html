@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Movie and TV Reviews Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .hero {
+        background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <nav class="bg-gray-900 text-white">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <a href="#" class="text-xl font-bold">Amazon Reviews Analysis</a>
+          <button class="md:hidden" id="menuButton">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+          <div class="hidden md:flex space-x-6" id="navbarMenu">
+            <a href="#dataset" class="hover:text-gray-300">Dataset</a>
+            <a href="#network" class="hover:text-gray-300">Network Analysis</a>
+            <a href="#text" class="hover:text-gray-300">Text Analysis</a>
+            <a href="#download" class="hover:text-gray-300">Downloads</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero text-white py-16">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl font-bold mb-4">
+          Exploring Amazon Movie & TV Reviews
+        </h1>
+        <p class="text-xl">
+          Uncovering patterns and insights in entertainment preferences
+        </p>
+      </div>
+    </section>
+
+    <section id="dataset" class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8">About the Dataset</h2>
+        <div class="max-w-4xl">
+          <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+            <h3 class="text-2xl font-semibold mb-4">
+              Amazon Movies & TV Reviews Dataset
+            </h3>
+            <p class="mb-6 text-gray-700">
+              We analyze a curated subset of Amazon's Movies and TV reviews,
+              focusing on verified purchases with helpful votes to ensure data
+              quality.
+            </p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="space-y-4">
+                <h4 class="text-lg font-semibold">Processing Steps</h4>
+                <ul class="space-y-2 text-gray-700">
+                  <li>Normalize metadata (titles, prices, descriptions)</li>
+                  <li>Group reviews by movie title</li>
+                  <li>Filter for verified purchases with helpful votes</li>
+                  <li>Remove reviews with missing titles</li>
+                </ul>
+              </div>
+              <div class="space-y-4">
+                <h4 class="text-lg font-semibold">Dataset Statistics</h4>
+                <ul class="space-y-2 text-gray-700">
+                  <li>Final dataset: ~1.6 million reviews</li>
+                  <li>Original dataset: 17.3 million reviews</li>
+                  <li>Time period: 1996-2023</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="network" class="py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8">Network Analysis</h2>
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+            <h3 class="text-2xl font-semibold mb-4">Co-Reviewer Network</h3>
+            <p class="mb-6 text-gray-700">
+              We connect movies if they share at least 4 common reviewers,
+              creating a network that reveals natural clusters of movies with
+              similar audiences.
+            </p>
+            <div id="network-viz" class="mb-6">
+              <img
+                src="assets/graph.png"
+                alt="Network Visualization"
+                class="w-full rounded-lg"
+              />
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="space-y-4">
+                <h4 class="text-lg font-semibold">Network Structure</h4>
+                <ul class="space-y-2 text-gray-700">
+                  <li>10,897 nodes (movies)</li>
+                  <li>25,988 edges</li>
+                  <li>Edge weight threshold: >= 3</li>
+                </ul>
+              </div>
+              <div class="space-y-4">
+                <h4 class="text-lg font-semibold">Community Detection</h4>
+                <ul class="space-y-2 text-gray-700">
+                  <li>Louvain algorithm (python-louvain)</li>
+                  <li>Modularity: 0.9375</li>
+                  <li>Nodes annotated with title, rating, and price</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="text" class="py-16 bg-gray-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8">Text Analysis</h2>
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white rounded-lg shadow-md p-8">
+            <h3 class="text-2xl font-semibold mb-4">Community Text Analysis</h3>
+            <p class="mb-6 text-gray-700">
+              We analyze the language patterns within each detected community to
+              understand how different movie clusters are discussed by
+              reviewers.
+            </p>
+            <div id="text-viz" class="mb-6">
+              <!-- Add your word clouds for the five largest communities here -->
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="space-y-4">
+                <h4 class="text-lg font-semibold">Text Processing</h4>
+                <ul class="space-y-2 text-gray-700">
+                  <li>Normalize and tokenize reviews</li>
+                  <li>Generate and merge significant bigrams</li>
+                  <li>Aggregate tokens by community</li>
+                </ul>
+              </div>
+              <div class="space-y-4">
+                <h4 class="text-lg font-semibold">Analysis</h4>
+                <ul class="space-y-2 text-gray-700">
+                  <li>Compute IDF across communities</li>
+                  <li>Calculate TF-IDF for five largest communities</li>
+                  <li>Generate word clouds for distinctive phrases</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="py-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8">Downloads & Resources</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h5 class="text-xl font-semibold mb-4">Dataset Downloads</h5>
+            <div class="space-y-4">
+              <div class="border-b pb-4">
+                <h6 class="font-semibold mb-2">Raw Data</h6>
+                <ul class="space-y-2">
+                  <li>
+                    <a
+                      href="https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/review_categories/Movies_and_TV.jsonl.gz"
+                      class="text-blue-600 hover:text-blue-800 flex items-center"
+                    >
+                      <span>Review Dataset (JSONL)</span>
+                      <span class="text-sm text-gray-500 ml-2"
+                        >17.3M reviews</span
+                      >
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/meta_categories/meta_Movies_and_TV.jsonl.gz"
+                      class="text-blue-600 hover:text-blue-800 flex items-center"
+                    >
+                      <span>Metadata Dataset (JSONL)</span>
+                      <span class="text-sm text-gray-500 ml-2"
+                        >747.8K movies and TV shows</span
+                      >
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/runeharlyk/CSS-02467-exam-project/blob/main/dataset/meta_Movies_and_TV_extended.jsonl"
+                      class="text-blue-600 hover:text-blue-800"
+                    >
+                      <span>Extended Metadata (JSONL)</span>
+                      <span class="text-sm text-gray-500 ml-2">12 reviews</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h6 class="font-semibold mb-2">Processed Data</h6>
+                <ul class="space-y-2">
+                  <li>
+                    <a
+                      href="graph.gexf"
+                      class="text-blue-600 hover:text-blue-800"
+                    >
+                      Network Graph (GEXF)
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h5 class="text-xl font-semibold mb-4">Technical Details</h5>
+            <p class="mb-4 text-gray-700">
+              For a comprehensive understanding of our analysis methodology,
+              including:
+            </p>
+            <ul class="space-y-2 mb-6 text-gray-700">
+              <li>Data preprocessing steps</li>
+              <li>Network analysis techniques</li>
+              <li>Text analysis methods</li>
+              <li>Model selection and evaluation</li>
+            </ul>
+            <a
+              href="https://nbviewer.org/github/runeharlyk/CSS-02467-exam-project/blob/main/Part%201.ipynb"
+              class="inline-block bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
+            >
+              View Detailed Analysis Notebook
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p>Created for Computational Social Science Course (02467)</p>
+      </div>
+    </footer>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+      const menuButton = document.getElementById("menuButton");
+      const navbarMenu = document.getElementById("navbarMenu");
+
+      menuButton.addEventListener("click", () => {
+        navbarMenu.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
