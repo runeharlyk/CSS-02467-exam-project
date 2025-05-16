@@ -283,11 +283,88 @@
               similar audiences.
             </p>
             <div id="network-viz" class="mb-8">
-              <img
-                src="assets/graph.png"
-                alt="Network Visualization"
-                class="w-full rounded-lg shadow-md"
-              />
+              <div class="relative">
+                <div class="overflow-hidden">
+                  <div
+                    class="flex transition-transform duration-500 ease-in-out"
+                    id="networkCarousel"
+                  >
+                    <div class="w-full flex-shrink-0">
+                      <div class="bg-gray-50 rounded-xl p-6">
+                        <h4 class="text-lg font-semibold mb-4 text-gray-800">
+                          Network Visualization
+                        </h4>
+                        <img
+                          src="assets/graph.png"
+                          alt="Network Visualization"
+                          class="w-full rounded-lg shadow-sm"
+                        />
+                      </div>
+                    </div>
+                    <div class="w-full flex-shrink-0">
+                      <div class="bg-gray-50 rounded-xl p-6">
+                        <h4 class="text-lg font-semibold mb-4 text-gray-800">
+                          Community Ratings Distribution
+                        </h4>
+                        <img
+                          src="assets/community_ratings.png"
+                          alt="Community Ratings Distribution"
+                          class="w-full rounded-lg shadow-sm"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-colors"
+                  id="prevNetwork"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 19l-7-7 7-7"
+                    ></path>
+                  </svg>
+                </button>
+                <button
+                  class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-colors"
+                  id="nextNetwork"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    ></path>
+                  </svg>
+                </button>
+                <div
+                  class="flex justify-center mt-4 space-x-2"
+                  id="networkDots"
+                >
+                  <button
+                    class="w-2 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors"
+                    data-index="0"
+                  ></button>
+                  <button
+                    class="w-2 h-2 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors"
+                    data-index="1"
+                  ></button>
+                </div>
+              </div>
             </div>
             <div class="grid md:grid-cols-2 gap-8">
               <div class="space-y-4">
@@ -380,7 +457,7 @@
                         d="M5 13l4 4L19 7"
                       ></path>
                     </svg>
-                    Modularity: 0.9375
+                    Modularity: 0.767
                   </li>
                   <li class="flex items-center">
                     <svg
@@ -892,6 +969,69 @@
 
       // Start auto-advance initially
       startAutoAdvance();
+
+      // Network Carousel
+      const networkCarousel = document.getElementById("networkCarousel");
+      const prevNetworkButton = document.getElementById("prevNetwork");
+      const nextNetworkButton = document.getElementById("nextNetwork");
+      const networkDots = document.querySelectorAll("#networkDots button");
+      let currentNetworkIndex = 0;
+      const totalNetworkSlides = networkDots.length;
+      let networkAutoAdvanceInterval;
+      let networkUserInteractionTimeout;
+
+      function startNetworkAutoAdvance() {
+        networkAutoAdvanceInterval = setInterval(() => {
+          currentNetworkIndex = (currentNetworkIndex + 1) % totalNetworkSlides;
+          updateNetworkCarousel();
+        }, 5000);
+      }
+
+      function stopNetworkAutoAdvance() {
+        clearInterval(networkAutoAdvanceInterval);
+      }
+
+      function handleNetworkUserInteraction() {
+        stopNetworkAutoAdvance();
+        clearTimeout(networkUserInteractionTimeout);
+        networkUserInteractionTimeout = setTimeout(() => {
+          startNetworkAutoAdvance();
+        }, 10000);
+      }
+
+      function updateNetworkCarousel() {
+        networkCarousel.style.transform = `translateX(-${
+          currentNetworkIndex * 100
+        }%)`;
+        networkDots.forEach((dot, index) => {
+          dot.classList.toggle("bg-blue-500", index === currentNetworkIndex);
+          dot.classList.toggle("bg-gray-300", index !== currentNetworkIndex);
+        });
+      }
+
+      prevNetworkButton.addEventListener("click", () => {
+        currentNetworkIndex =
+          (currentNetworkIndex - 1 + totalNetworkSlides) % totalNetworkSlides;
+        updateNetworkCarousel();
+        handleNetworkUserInteraction();
+      });
+
+      nextNetworkButton.addEventListener("click", () => {
+        currentNetworkIndex = (currentNetworkIndex + 1) % totalNetworkSlides;
+        updateNetworkCarousel();
+        handleNetworkUserInteraction();
+      });
+
+      networkDots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          currentNetworkIndex = index;
+          updateNetworkCarousel();
+          handleNetworkUserInteraction();
+        });
+      });
+
+      // Start network carousel auto-advance initially
+      startNetworkAutoAdvance();
     </script>
   </body>
 </html>
